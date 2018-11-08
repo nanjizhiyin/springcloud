@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @Value("${myname}")
-    String myname;
-
-    @RequestMapping(value = "/hi")
-    public String hi() {
-        return myname;
-    }
+//    @Value("${myname}")
+//    String myname;
+//
+//    @RequestMapping(value = "/hi")
+//    public String hi() {
+//        return myname;
+//    }
 
 
     @RequestMapping(value = "/hi1")
