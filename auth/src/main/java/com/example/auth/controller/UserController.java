@@ -19,4 +19,10 @@ public class UserController {
 
         return "token123123";
     }
+
+    @RequestMapping(value = "/auth")
+    public String auth(@RequestParam("token") String token) {
+
+        return "0";
+    }
 }

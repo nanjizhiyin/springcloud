@@ -6,10 +6,12 @@ package com.example.zuul.config;
  * @Date 2018/11/8 16:36
  */
 
+import com.example.zuul.service.Userservice;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +26,8 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @Component
 public class LoginFilter extends ZuulFilter {
 
+    @Autowired
+    private Userservice userservice;
     /**
      * 过滤器类型，前置过滤器
      */
@@ -83,6 +87,13 @@ public class LoginFilter extends ZuulFilter {
             requestContext.setSendZuulResponse(false);
             //返回错误代码
             requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+        }else{
+            String tmpStr = userservice.auth(token);
+            if ("0".equals(tmpStr)){
+                System.out.println("登录成功了");
+            }else{
+
+            }
         }
         return null;
     }
