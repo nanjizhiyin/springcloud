@@ -1,0 +1,21 @@
+server:
+  port: 7010
+
+spring:
+  application:
+    name: config
+
+  # 配置git仓库地址
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/nanjizhiyin/springcloudconfig
+          username: nanjizhiyin
+          password: wu5211314
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8899/eureka/
+
