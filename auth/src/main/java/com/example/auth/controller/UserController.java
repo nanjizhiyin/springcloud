@@ -1,5 +1,6 @@
 package com.example.auth.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,17 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
+    @Autowired
+    private RedisService redisService;
 
     @RequestMapping(value = "/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password) {
-
-        return "token123123";
+        String token = username+"_"+password;
+        redisService.set(username,token);
+        return token;
     }
 
     @RequestMapping(value = "/auth")
     public String auth(@RequestParam("token") String token) {
-
-        return "0";
+        String[] strs = token.split("_");
+        String username = strs[0];
+        Object tmpObj = redisService.get(username);
+        if (tmpObj != null){
+            if (token.equals(tmpObj.toString())){
+                //验证成功
+                return "0";
+            }
+        }
+        return "-1";
     }
 }

@@ -20,11 +20,14 @@ eureka:
 zuul:
   routes:
     service1:
-      path: /service1/**
       serviceId: service1
+      path: /service1/**
     service2:
-      path: /service2/**
       serviceId: service2
+      path: /service2/**
+    auth:
+      serviceId: auth
+      path: /auth/**
 
 # routes to url  这里是绑定具体的ip地址
     api-a-url:
