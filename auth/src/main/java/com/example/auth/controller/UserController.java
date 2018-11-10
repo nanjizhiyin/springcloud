@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @Description
  * @Author 郜金丹
@@ -17,10 +20,14 @@ public class UserController {
     private RedisService redisService;
 
     @RequestMapping(value = "/login")
-    public String login(@RequestParam("username") String username,
+    public String login(HttpServletResponse response,
+                        HttpServletRequest request,
+                        @RequestParam("username") String username,
                         @RequestParam("password") String password) {
         String token = username+"_"+password;
         redisService.set(username,token);
+
+        response.setHeader("Set-Cookie","token="+token);
         return token;
     }
 

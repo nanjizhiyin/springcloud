@@ -18,16 +18,20 @@ eureka:
 
 # routes to serviceId 这里边是通过serviceid来绑定地址，当在路径后添加/api-a/   则是访问service-A对应的服务。
 zuul:
+  ignoredServices: "*"
   routes:
     service1:
       serviceId: service1
       path: /service1/**
+      sensitiveHeaders:
     service2:
       serviceId: service2
       path: /service2/**
+      sensitiveHeaders:
     auth:
       serviceId: auth
       path: /auth/**
+      sensitiveHeaders:
 
 # routes to url  这里是绑定具体的ip地址
     api-a-url:
