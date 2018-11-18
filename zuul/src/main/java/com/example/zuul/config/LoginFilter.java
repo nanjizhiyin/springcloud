@@ -60,6 +60,12 @@ public class LoginFilter extends ZuulFilter {
         if (uri.startsWith("/auth/login")) {
             return false;
         }
+        if (uri.startsWith("/service1")) {
+            return false;
+        }
+        if (uri.startsWith("/service2")) {
+            return false;
+        }
         return true;
     }
 

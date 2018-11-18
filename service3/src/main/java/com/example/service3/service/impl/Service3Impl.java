@@ -1,7 +1,7 @@
-package com.example.service2.service.impl;
+package com.example.service3.service.impl;
 
 import com.codingapi.tx.annotation.TxTransaction;
-import com.example.service2.service.Service2;
+import com.example.service3.service.Service3;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
  * @Date 2018/11/8 9:20
  */
 @Component
-public class Service2Impl implements Service2 {
+public class Service3Impl implements Service3 {
     @Override
 
-    public String hi2() {
-        return "22222222";
+    public String hi3() {
+        return "333333333333";
     }
 }

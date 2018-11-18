@@ -1,7 +1,9 @@
 package com.example.service2.controller;
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.example.service2.service.Service2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,8 @@ public class Service2Controller {
         return "service2";
     }
 
+    @Transactional
+    @TxTransaction
     @RequestMapping(value = "/hi2")
     public String hi2() {
         return service2.hi2();

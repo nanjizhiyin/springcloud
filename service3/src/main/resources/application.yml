@@ -1,0 +1,49 @@
+server:
+  port: 2226
+
+spring:
+  application:
+    name: service3
+  zipkin:
+    base-url: http://localhost:8769
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+  datasource:
+    url: jdbc:mysql://192.168.0.123:3306/PersonalDb?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&autoReconnectForPools=true
+    driver-class-name: com.mysql.cj.jdbc.Driver  #com.mysql.jdbc.Driver
+    username: root
+    password: lzh@123
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    #配制监控统计拦截
+    filters: stat,wall,log4j
+    #最大活跃数
+    maxActive: 1000
+    #初始化数量
+    initialSize: 100
+    #最大连接等待超时的时间
+    maxWait: 60000
+    #打开PSCatch，并且指定每个连接PSCatch的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #打开mergeSql功能
+    connectionProperties: druid.stat.mergeSql=true,druid.stat.slowSqlMillis=5000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 1
+    validationInterval: 30000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8899/eureka/
+
+# 分布式事物
+tm:
+  manager:
+    url: http://localhost:7000/tx/manager/
