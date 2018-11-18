@@ -1,6 +1,6 @@
 package com.example.service2.controller;
 
-import com.example.service2.server.Service1Interface;
+import com.example.service2.service.Service2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2018/11/6 19:59
  */
 @RestController
-public class HelloController {
+public class Service2Controller {
+
 
     @Autowired
-    private Service1Interface service1Interface;
+    private Service2 service2;
 
     @RequestMapping(value = "/hi")
     public String hi() {
@@ -23,6 +24,6 @@ public class HelloController {
 
     @RequestMapping(value = "/hi2")
     public String hi2() {
-        return service1Interface.hi2() ;
+        return service2.hi2();
     }
 }

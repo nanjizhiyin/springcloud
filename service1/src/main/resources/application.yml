@@ -4,16 +4,31 @@ server:
 spring:
   application:
     name: service1
-  zipkin:
-    base-url: http://localhost:8769
+#  zipkin:
+#    base-url: http://localhost:8769
   sleuth:
     sampler:
       percentage: 1.0
+
+  datasource:
+    url: jdbc:mysql://192.168.0.123:3306/PersonalDb?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&autoReconnectForPools=true
+    driver-class-name: com.mysql.cj.jdbc.Driver  #com.mysql.jdbc.Driver
+    username: root
+    password: lzh@123
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8899/eureka/
 
+feign:
+  hystrix:
+    enabled: true
+
+#txmanager地址
+tm:
+  manager:
+    url: http://127.0.0.1:7000/tx/manager/
 
 
