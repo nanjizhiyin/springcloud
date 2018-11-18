@@ -1,6 +1,7 @@
 package com.example.service1.controller;
 
 import com.codingapi.tx.annotation.TxTransaction;
+import com.example.service1.server.Service1;
 import com.example.service1.server.Service2;
 import com.example.service1.server.Service3;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,7 @@ import javax.naming.ldap.PagedResultsControl;
 public class Service1Controller {
 
     @Autowired
-    private Service2 service2;
-    @Autowired
-    private Service3 service3;
+    private Service1 service1;
 
 //    @Value("${myname}")
 //    String myname;
@@ -42,11 +41,10 @@ public class Service1Controller {
     @TxTransaction(isStart=true)
     @RequestMapping(value = "/hi2")
     public String hi2() {
-        String str2 = service2.hi2();
-        String str3 = service3.hi3();
-        //模拟异常
-        int v = 100/0;
+        String str2 = service1.hi2();
+//        String str3 = service3.hi3();
 
-        return "成功"+str2 + str3;
+
+        return str2;
     }
 }

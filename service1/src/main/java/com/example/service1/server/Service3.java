@@ -1,5 +1,6 @@
 package com.example.service1.server;
 
+import com.example.service1.server.impl.Service3Impl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 

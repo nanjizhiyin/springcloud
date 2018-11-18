@@ -24,8 +24,6 @@ public class Service2Controller {
         return "service2";
     }
 
-    @Transactional
-    @TxTransaction
     @RequestMapping(value = "/hi2")
     public String hi2() {
         return service2.hi2();

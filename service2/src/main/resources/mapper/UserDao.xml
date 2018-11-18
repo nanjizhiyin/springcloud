@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.service2.mapper.UserDao">
+    <select id="findUserByUsername" resultType="com.example.service2.entity.User">
+        SELECT
+            a.username,
+            a.password,
+            a.name,
+            a.email,
+            a.mobile
+        FROM
+        xpuser a
+        WHERE
+            a.username = #{username}
+    </select>
+    <insert id="insetUsername">
+        INSERT INTO xpuser(username,name) VALUES(#{username},#{name})
+    </insert>
+</mapper>

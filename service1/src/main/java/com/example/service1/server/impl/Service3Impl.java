@@ -1,5 +1,6 @@
-package com.example.service1.server;
+package com.example.service1.server.impl;
 
+import com.example.service1.server.Service3;
 import org.springframework.stereotype.Component;
 
 /**

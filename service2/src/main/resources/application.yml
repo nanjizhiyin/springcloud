@@ -11,33 +11,10 @@ spring:
       percentage: 1.0
 
   datasource:
-    url: jdbc:mysql://192.168.0.123:3306/PersonalDb?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&autoReconnectForPools=true
+    url: jdbc:mysql://localhost:3306/springcloud?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver  #com.mysql.jdbc.Driver
     username: root
-    password: lzh@123
-    platform: mysql
-    type: com.alibaba.druid.pool.DruidDataSource
-    #配制监控统计拦截
-    filters: stat,wall,log4j
-    #最大活跃数
-    maxActive: 1000
-    #初始化数量
-    initialSize: 100
-    #最大连接等待超时的时间
-    maxWait: 60000
-    #打开PSCatch，并且指定每个连接PSCatch的大小
-    poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    #打开mergeSql功能
-    connectionProperties: druid.stat.mergeSql=true,druid.stat.slowSqlMillis=5000
-    minIdle: 1
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 30000
-    validationQuery: select 1
-    validationInterval: 30000
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
+    password: 5211314
 eureka:
   client:
     serviceUrl:
@@ -47,3 +24,8 @@ eureka:
 tm:
   manager:
     url: http://localhost:7000/tx/manager/
+
+## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.example.service2.entity  # 注意：对应实体类的路径
