@@ -81,6 +81,14 @@
             <artifactId>tx-plugins-db</artifactId>
             <version>${lcn.last.version}</version>
         </dependency>
+        <!-- 引入webp ${basedir}表示项目根目录,即包含pom.xml文件的目录 -->
+        <dependency>
+            <groupId>com.codingapi</groupId>
+            <artifactId>transaction-springcloud</artifactId>
+            <version>${lcn.last.version}</version>
+            <systemPath>${basedir}/libs/transaction-springcloud-4.0.3.jar</systemPath>
+            <scope>system</scope>
+        </dependency>
         <!--分布式事务结束-->
 
         <dependency>
