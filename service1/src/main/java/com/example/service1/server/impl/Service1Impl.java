@@ -19,14 +19,11 @@ public class Service1Impl implements Service1 {
     private Service2 service2;
 
     @Override
-    @Transactional
     @TxTransaction(isStart=true)
-    public String hi2() {
+    public String hi2()  {
         String str2 = service2.hi2();
-//        String str3 = service3.hi3();
         //模拟异常
-        int v = 100/0;
-
+//        int v = 100/0;
         return "成功"+str2;
     }
 }

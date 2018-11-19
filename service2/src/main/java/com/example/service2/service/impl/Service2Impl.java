@@ -19,7 +19,6 @@ public class Service2Impl implements Service2{
     @Autowired
     private UserDao userDao;
 
-    @Transactional
     @TxTransaction
     @Override
     public String hi2() {
@@ -27,6 +26,8 @@ public class Service2Impl implements Service2{
 //        return user.getMobile();
 
         userDao.insetUsername("100007","08");
+        //模拟异常
+//        int v = 100/0;
         return "100007";
     }
 }

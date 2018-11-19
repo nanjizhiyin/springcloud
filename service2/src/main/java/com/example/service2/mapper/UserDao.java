@@ -4,7 +4,6 @@ import com.example.service2.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Copyright (C) 2017/5/10 北京学信科技有限公司
@@ -16,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 2017/5/10     kyq                       v1.0.0        create
  */
 
-
 @Mapper
+@Repository
 public interface UserDao {
 
     /**
